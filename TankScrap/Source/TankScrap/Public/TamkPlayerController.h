@@ -14,7 +14,7 @@ class TANKSCRAP_API ATamkPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
+private:
 	void Tick(float DeltaTime) override;
 
 	ATank* GetControlledTank() const;
@@ -23,5 +23,14 @@ public:
 	
 	// Starts the tank moving the barrel to where the crosshair inntersects the world
 	void AimTowardCrosshair();
+
+	bool ATamkPlayerController::GetSightRayHitLocation(FVector& hit) const;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairXLocaiton = 0.5;
+
+	UPROPERTY(EditAnywhere)
+	float CrossHairYLocaiton = 0.33333;
+
 
 };

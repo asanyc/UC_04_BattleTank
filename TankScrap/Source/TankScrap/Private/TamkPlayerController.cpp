@@ -39,8 +39,25 @@ void ATamkPlayerController::AimTowardCrosshair()
 {
 	if (!GetControlledTank()) { return; }
 
-	// Get world location through crosshair
-	// If raycast/linetrace intersects world/landscape
+	FVector HitLocation;  // out parameter for raycast
+	if (GetSightRayHitLocation(HitLocation)) {
+		// UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
+		// If raycast/linetrace intersects world/landscape
 		// turn turret towards intersection point
+	}
 
+}
+// Get world location through crosshair
+bool ATamkPlayerController::GetSightRayHitLocation(FVector& hit) const
+{
+	// find the crosshari screen position
+	int32 ViewPortSizeX, ViewPortSizeY = 0;
+
+	GetViewportSize(ViewPortSizeX, ViewPortSizeY);
+
+	auto ScreenLocation = FVector2D(CrossHairXLocaiton * ViewPortSizeX, CrossHairYLocaiton * ViewPortSizeY);
+	UE_LOG(LogTemp, Warning, TEXT("Cursor location: %s"), *ScreenLocation.ToString());
+
+	hit = FVector(1.0);
+	return true;
 }
