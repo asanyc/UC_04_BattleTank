@@ -40,10 +40,10 @@ void ATamkPlayerController::AimTowardCrosshair()
 	if (!GetControlledTank()) { return; }
 
 	FVector HitLocation;  // out parameter for raycast
+	// If raycast/linetrace intersects world/landscape
 	if (GetSightRayHitLocation(HitLocation)) {
-		//UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
-		// If raycast/linetrace intersects world/landscape
 		// turn turret towards intersection point
+		GetControlledTank()->AimAt(HitLocation);
 	}
 
 }
