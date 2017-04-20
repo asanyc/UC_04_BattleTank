@@ -41,14 +41,14 @@ void ATamkPlayerController::AimTowardCrosshair()
 
 	FVector HitLocation;  // out parameter for raycast
 	if (GetSightRayHitLocation(HitLocation)) {
-		// UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
+		//UE_LOG(LogTemp, Warning, TEXT("Hit location: %s"), *HitLocation.ToString());
 		// If raycast/linetrace intersects world/landscape
 		// turn turret towards intersection point
 	}
 
 }
 // Get world location through crosshair
-bool ATamkPlayerController::GetSightRayHitLocation(FVector& hit) const
+bool ATamkPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 {
 	// find the crosshari screen position
 	int32 ViewPortSizeX, ViewPortSizeY = 0;
@@ -57,14 +57,14 @@ bool ATamkPlayerController::GetSightRayHitLocation(FVector& hit) const
 
 	auto ScreenLocation = FVector2D(CrossHairXLocaiton * ViewPortSizeX, CrossHairYLocaiton * ViewPortSizeY);
 	// UE_LOG(LogTemp, Warning, TEXT("Cursor location: %s"), *ScreenLocation.ToString());
+
+	// Deproject the crosshair from screen- to world-space
 	FVector LookDirection;
 	if (GetLookDirection(ScreenLocation, LookDirection))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Aim Direction: %s"), *LookDirection.ToString());
+		// raycast along that look direction and what we hit
+		GetLookVectorHitLocation(LookDirection, HitLocation);
 	}
-	// Deproject the crosshair from screen- to world-space
-	// raycast along that look direction and what we hit
-	hit = FVector(1.0);
 	return true;
 }
 
@@ -76,4 +76,24 @@ bool ATamkPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 		ScreenLocation.Y,
 		CameraWorldLocation,
 		LookDirection);
+}
+
+bool ATamkPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const
+{
+	FHitResult HitResult;
+	auto StartLocation = PlayerCameraManager->GetCameraLocation();
+	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
+	if (GetWorld()->LineTraceSingleByChannel(
+		HitResult,
+		StartLocation,
+		EndLocation,
+		ECC_Visibility
+		))
+	{
+		// Set Hit location
+		HitLocation = HitResult.Location;
+		return true;
+	}
+	HitLocation = FVector(0);
+	return false;
 }
