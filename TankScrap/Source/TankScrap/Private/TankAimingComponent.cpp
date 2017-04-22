@@ -16,7 +16,27 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Firing at %f"), LaunchSpeed);
+	if (!Barrel) { return; }
+
+	FVector OutTossVelocity;
+	FVector MuzzleLocation = Barrel->GetSocketLocation(FName("Muzzle"));
+	//calculate launch vector
+	if (UGameplayStatics::SuggestProjectileVelocity(
+		this,
+		OutTossVelocity,
+		MuzzleLocation,
+		HitLocation,
+		LaunchSpeed,
+		false,
+		6.0f,
+		0.0f,
+		ESuggestProjVelocityTraceOption::DoNotTrace)
+		)
+	{
+		auto AimDirection = OutTossVelocity.GetSafeNormal();
+		UE_LOG(LogTemp, Warning, TEXT("Firing at %s"), *AimDirection.ToString());
+	}
+
 
 }
 
