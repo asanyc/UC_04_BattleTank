@@ -3,9 +3,12 @@
 #include "TankScrap.h"
 #include "TankAimingComponent.h"
 #include "TankBarrelComponent.h"
+#include "TankTurretComponent.h"
 #include "Tank.h"
 
-class UTankBarrelComponent;	// Forward Declaratikn
+// Forward Declaratikn
+class UTankBarrelComponent;
+class UTankTurretComponent;
 
 // Sets default values
 ATank::ATank()
@@ -40,5 +43,9 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrelComponent* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+}
+void ATank::SetTurretReference(UTankTurretComponent* TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 

@@ -6,7 +6,9 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
-class UTankBarrelComponent;	// Forward Declaratikn
+// Forward Declaratikn
+class UTankBarrelComponent;
+class UTankTurretComponent;
 class UTankAimingComponent;
 
 UCLASS()
@@ -19,6 +21,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrelComponent* BarrelToSet);
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretReference(UTankTurretComponent* TurretToSet);
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
