@@ -21,7 +21,7 @@ public:
 private:
 	// Speed of elevation during aiming
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float RelativeSpeed = 20;
+	float MaxDegreesPerSecond = 5;
 
 	// How far down can the barrel pitch from level?  Can go lower in from, but this is the rear safety declination
 	UPROPERTY(EditAnywhere, Category = Setup)
