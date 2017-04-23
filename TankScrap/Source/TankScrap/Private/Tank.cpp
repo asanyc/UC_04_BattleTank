@@ -4,11 +4,13 @@
 #include "TankAimingComponent.h"
 #include "TankBarrelComponent.h"
 #include "TankTurretComponent.h"
+#include "Projectile.h"
 #include "Tank.h"
 
 // Forward Declaratikn
 class UTankBarrelComponent;
 class UTankTurretComponent;
+class AProjectile;
 
 // Sets default values
 ATank::ATank()
@@ -38,6 +40,14 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::Fire()
 {
 	UE_LOG(LogTemp, Error, TEXT("BOOM!!"));
+
+	if (!Barrel) { return; }
+	//Spwawn prjectile at muzzle
+	GetWorld()->SpawnActor<AProjectile>(
+		ProjectileBlueprint,
+		Barrel->GetSocketLocation(FName("Muzzle")),
+		Barrel->GetSocketRotation(FName("Muzzle"))
+		);
 }
 
 void ATank::AimAt(FVector HitLocation)
@@ -48,6 +58,7 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrelComponent* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
 }
 void ATank::SetTurretReference(UTankTurretComponent* TurretToSet)
 {
