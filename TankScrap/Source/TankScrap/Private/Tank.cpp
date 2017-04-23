@@ -35,6 +35,11 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 }
 
+void ATank::Fire()
+{
+	UE_LOG(LogTemp, Error, TEXT("BOOM!!"));
+}
+
 void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);

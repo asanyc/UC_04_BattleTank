@@ -19,16 +19,6 @@ public:
 private:
 	// Speed of rotation during aiming
 	UPROPERTY(EditAnywhere, Category = Setup)
-		float MaxDegreesPerSecond = 5;
-
-	// How far the barrel can turn right during aiming & target acquisition
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float RotationMinDegrees = 0;
-
-	// How far the barrel can turn left during aiming & target acquisition
-	UPROPERTY(EditAnywhere, Category = Setup)
-		float RotationMaxDegrees = 40;
-
-	
+		float MaxDegreesPerSecond = 25;
 	
 };

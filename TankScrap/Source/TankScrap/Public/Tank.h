@@ -18,6 +18,8 @@ class TANKSCRAP_API ATank : public APawn
 
 public:
 	void AimAt(FVector HitLocation);
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Fire();
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrelComponent* BarrelToSet);

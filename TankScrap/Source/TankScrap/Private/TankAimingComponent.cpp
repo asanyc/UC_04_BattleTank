@@ -18,7 +18,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	if (!Barrel && !Turret) { return; }
+	if (!Barrel || !Turret) { return; }
 
 	FVector OutTossVelocity;
 	FVector MuzzleLocation = Barrel->GetSocketLocation(FName("Muzzle"));
@@ -76,11 +76,13 @@ void UTankAimingComponent::MoveTurretTowards(FVector AimDirection)
 // Setup barrel reference for aiming
 void UTankAimingComponent::SetBarrelReference(UTankBarrelComponent* BarrelToSet)
 {
+	if (!BarrelToSet) { return; }
 	Barrel = BarrelToSet;
 }
 
 // Setup Turret reference for aiming
 void UTankAimingComponent::SetTurretReference(UTankTurretComponent* TurretToSet)
 {
+	if (!TurretToSet) { return; }
 	Turret = TurretToSet;
 }
