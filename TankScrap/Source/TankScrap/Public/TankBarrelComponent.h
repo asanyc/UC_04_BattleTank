@@ -8,7 +8,9 @@
 /**
  * 
  */
-UCLASS()
+
+// Contains Barrel aiming elevation and speed
+UCLASS(meta = (BlueprintSpawnableComponent), hidecategories = ("Collision","Lighting","Rendering","Component Replication","Cooking","Mobile"))
 class TANKSCRAP_API UTankBarrelComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
@@ -16,5 +18,17 @@ class TANKSCRAP_API UTankBarrelComponent : public UStaticMeshComponent
 public:
 	void Elevate(float DegreesPerSecond);
 	
-	
+private:
+	// Speed of elevation during aiming
+	UPROPERTY(EditAnywhere, Category = Setup)
+	float MaxDegreesPerSecond = 20;
+
+	// How far down can the barrel pitch from level?  Can go lower in from, but this is the rear safety declination
+	UPROPERTY(EditAnywhere, Category = Setup)
+	float ElevationMinDegrees = 0;	
+
+	// How far the barrel can rise during aiming & target acquisition
+	UPROPERTY(EditAnywhere, Category = Setup)
+	float ElevationMaxDegrees = 40;	
+
 };
