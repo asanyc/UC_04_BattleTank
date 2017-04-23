@@ -17,6 +17,8 @@ public:
 
 	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 
+	// TODO add void SetTurretReference(UStaticMeshComponent* TurretToSet);
+
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -29,5 +31,5 @@ protected:
 private:	
 	UStaticMeshComponent* Barrel = nullptr;
 		
-	
+	void MoveBarrelTowards(FVector AimDirection);
 };
