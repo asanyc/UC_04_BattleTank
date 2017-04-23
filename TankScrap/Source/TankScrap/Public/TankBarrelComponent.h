@@ -16,12 +16,12 @@ class TANKSCRAP_API UTankBarrelComponent : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
-	void Elevate(float DegreesPerSecond);
+	void Elevate(float RelativeSpeed);
 	
 private:
 	// Speed of elevation during aiming
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float MaxDegreesPerSecond = 20;
+	float RelativeSpeed = 20;
 
 	// How far down can the barrel pitch from level?  Can go lower in from, but this is the rear safety declination
 	UPROPERTY(EditAnywhere, Category = Setup)
