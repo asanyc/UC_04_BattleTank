@@ -2,6 +2,7 @@
 
 #include "TankScrap.h"
 #include "TankAimingComponent.h"
+#include "TankBarrelComponent.h"
 #include "Tank.h"
 
 class UTankBarrelComponent;	// Forward Declaratikn

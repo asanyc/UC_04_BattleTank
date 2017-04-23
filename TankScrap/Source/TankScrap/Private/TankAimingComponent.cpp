@@ -27,7 +27,11 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		OutTossVelocity,
 		MuzzleLocation,
 		HitLocation,
-		LaunchSpeed
+		LaunchSpeed,
+		false,
+		0.0f,
+		0.0f,
+		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
 	auto Time = GetWorld()->GetTimeSeconds();
