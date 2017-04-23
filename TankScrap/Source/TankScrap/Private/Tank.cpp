@@ -1,9 +1,10 @@
 // All mines.
 
-#include "TankAimingComponent.h"
 #include "TankScrap.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 
+class UTankBarrelComponent;	// Forward Declaratikn
 
 // Sets default values
 ATank::ATank()
@@ -41,7 +42,7 @@ void ATank::AimAt(FVector HitLocation)
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
-void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void ATank::SetBarrelReference(UTankBarrelComponent* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }

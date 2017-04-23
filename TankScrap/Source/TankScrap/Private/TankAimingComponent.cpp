@@ -1,6 +1,7 @@
 // All mines.
 
 #include "TankScrap.h"
+#include "TankBarrelComponent.h"
 #include "TankAimingComponent.h"
 
 
@@ -49,15 +50,13 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
-	UE_LOG(LogTemp, Warning, TEXT("Firing solution is %s"), *DeltaRotator.ToString());
 
-	// move it as much as speed allows this frame
-	// Given a max elevation speed and the frame time
+	Barrel->Elevate(5);	// TODO remove magic number
 }
 
 
 // Setup barrel reference for aiming
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrelComponent* BarrelToSet)
 {
 	Barrel = BarrelToSet;
 }
