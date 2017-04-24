@@ -39,15 +39,14 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Error, TEXT("BOOM!!"));
-
 	if (!Barrel) { return; }
 	//Spwawn prjectile at muzzle
-	GetWorld()->SpawnActor<AProjectile>(
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 		ProjectileBlueprint,
 		Barrel->GetSocketLocation(FName("Muzzle")),
 		Barrel->GetSocketRotation(FName("Muzzle"))
 		);
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
 
 void ATank::AimAt(FVector HitLocation)

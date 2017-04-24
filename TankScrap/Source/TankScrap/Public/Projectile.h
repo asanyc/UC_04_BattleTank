@@ -13,6 +13,8 @@ class TANKSCRAP_API AProjectile : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AProjectile();
+	UProjectileMovementComponent* ProjectileMovement = nullptr;
+	void LaunchProjectile(float Speed);
 
 protected:
 	// Called when the game starts or when spawned
