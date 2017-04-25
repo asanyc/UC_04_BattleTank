@@ -45,6 +45,10 @@ private:
 	float LaunchSpeed = 100000;	// TODO find sensible default
 
 	UPROPERTY(EditAnywhere, Category = Firing)
+	float ReloadTimeInSeconds = 3;
+	double LastFireTime = 0;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
 	TSubclassOf<AProjectile> ProjectileBlueprint;	// TODO Check alternative in video 145 docs
 
 	// Local Barrel reference for spawning projectile

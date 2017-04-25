@@ -18,11 +18,4 @@ class TANKSCRAP_API ATankAIController : public AAIController
 public:
 	virtual void BeginPlay() override;
 	virtual void ATankAIController::Tick(float DeltaTime) override;
-
-	ATank* GetControlledTank() const;
-
-	ATank* GetPlayerTank() const;
-
-	
-	
 };
