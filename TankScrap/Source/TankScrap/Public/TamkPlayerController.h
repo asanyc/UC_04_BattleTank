@@ -29,13 +29,13 @@ private:
 	bool ATamkPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 	bool ATamkPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float CrossHairXLocaiton = 0.5;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float CrossHairYLocaiton = 0.33333;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000;
 
 

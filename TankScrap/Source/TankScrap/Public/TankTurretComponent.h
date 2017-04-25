@@ -18,7 +18,7 @@ public:
 
 private:
 	// Speed of rotation during aiming
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 		float MaxDegreesPerSecond = 25;
 	
 };
