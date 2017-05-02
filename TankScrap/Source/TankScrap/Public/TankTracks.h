@@ -1,0 +1,24 @@
+// All mines.
+
+#pragma once
+
+#include "Components/StaticMeshComponent.h"
+#include "TankTracks.generated.h"
+
+/**
+ * 
+ */
+UCLASS(meta = (BlueprintSpawnableComponent))
+class TANKSCRAP_API UTankTracks : public UStaticMeshComponent
+{
+	GENERATED_BODY()
+
+public:
+	// Sets a throttle between -1.0 and +1.0
+	UFUNCTION(BlueprintCallable, Category = Input)
+	void SetThrottle(float throttle);
+	
+	
+	
+	
+};
