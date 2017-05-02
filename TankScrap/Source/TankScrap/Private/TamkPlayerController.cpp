@@ -20,11 +20,11 @@ void ATamkPlayerController::BeginPlay()
 
 	if (!ControlledTank)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Nothing is under control"));
+		//UE_LOG(LogTemp, Error, TEXT("Nothing is under control"));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("You are controlling: %s"),*(ControlledTank->GetName()));
+		//UE_LOG(LogTemp, Warning, TEXT("You are controlling: %s"),*(ControlledTank->GetName()));
 	}
 	
 }
