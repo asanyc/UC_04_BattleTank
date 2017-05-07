@@ -14,9 +14,9 @@ void UTankMovementComponent::Initialize(UTankTracks* LeftTrackToSet, UTankTracks
 
 void UTankMovementComponent::IntendMoveForward(float Throw) 
 {
-	auto Name = GetName();
+	//auto Name = GetName();
 	UE_LOG(LogTemp, Warning, TEXT("Intend Move forward throw: %f"), Throw);
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-	// TOSO prevent compound speed input
+	// TODO prevent compound speed input
 }
