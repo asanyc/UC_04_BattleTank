@@ -5,18 +5,22 @@
 #include "TankMovementComponent.h"
 
 
-void UTankMovementComponent::Initialize(UTankTracks* LeftTrackToSet, UTankTracks* RighttTrackToSet)
+void UTankMovementComponent::Initialize(UTankTracks* LeftTrackToSet, UTankTracks* RightTrackToSet)
 {
-	if (!LeftTrackToSet || !RighttTrackToSet) { return; }
 	LeftTrack = LeftTrackToSet;
-	RightTrack = RighttTrackToSet;
+	RightTrack = RightTrackToSet;
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw) 
 {
-	//auto Name = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("Intend Move forward throw: %f"), Throw);
+	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-	// TODO prevent compound speed input
+}
+
+void UTankMovementComponent::IntendTurnRight(float Throw)
+{
+	if (!LeftTrack || !RightTrack) { return; }
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
 }
